@@ -1,117 +1,78 @@
-# tron-tools
+# 🛠️ TRON Tools — for Smart Contract Developers
 
-tron-tools
+TRON 개발자를 위한 VS Code 확장 도구입니다.  
+TRC20 `transferFrom` ABI 인코딩, 주소 ➝ Hex 변환 등 스마트컨트랙트 테스트와 디버깅에 필요한 기능을 WebView UI로 제공합니다.
 
-## Reriement Tools
+---
 
-| 항목            | 선택                      |
-| ------------- | ----------------------- |
-| **언어**        | ✅ TypeScript            |
-| **UI**        | ✅ Svelte                |
-| **빌드 도구**     | ✅ Vite                  |
-| **ABI 라이브러리** | ✅ Ethers.js or TronWeb  |
-| **통신 방식**     | ✅ WebView `postMessage` |
+## ✨ 주요 기능
 
-## 확장 로직
+- 🔗 `transferFrom(owner, to, amount)` → ABI 인코딩 Hex 생성
+- 🔄 TRON 주소(`T...`) → `0x41...` Hex 포맷 변환
+- 📦 WebView 기반 직관적인 입력/출력 UI
+- 🔜 향후 ABI 디코더, 서명 생성, RPC 유틸리티 추가 예정
 
-| 역할         | 기술 스택                       | 설명                             |
-| ---------- | --------------------------- | ------------------------------ |
-| 🧠 확장 로직   | TypeScript                  | 명령 등록, WebView 창 띄우기 등         |
-| 🎨 UI (웹뷰) | Svelte (with Vite)          | 빠른 빌드, 간결한 코드, 재사용성            |
-| 📦 번들링 도구  | Vite                        | Svelte 앱을 빠르게 WebView용 JS로 번들링 |
-| 📜 ABI 처리  | Ethers.js 또는 TronWeb        | ABI 인코딩, 주소 처리                 |
-| 🔌 통신      | `postMessage` (WebView API) | WebView <-> Extension 간 메시지 통신 |
+---
 
-### Information Archture
+## 🚀 사용 방법
 
-```sh
-tron-tools/
-├── src/
-│   ├── extension.ts              # 확장 진입점 (VS Code 진입 파일)
-│   └── webview/                   # Svelte UI 앱
-│       ├── App.svelte            # Svelte 메인 컴포넌트
-│       ├── store.ts
-│       ├── main.ts               # Svelte 진입점
-│       └── index.html            # 웹뷰용 HTML
-│       └── pages/
-│           ├── TransferEncoder.svelte
-│           └── AddressToHex.svelte
-├── public/
-│   └── build/                    # Vite 빌드 결과물
-│       └── bundle.js             # WebView에서 사용할 JS
-├── .vscode/
-│   └── launch.json               # 확장 디버깅 설정 (선택)
-├── dist/
-│   ├── extension/                # 컴파일된 확장 코드
-│   └── webview/                  # 웹뷰 빌드 결과물 (vite에서 따로 생성됨)
-├── tsconfig.json                 # TypeScript 설정
-├── tsconfig.extension.json
-├── tsconfig.webview.json
-├── package.json                  # npm 스크립트 및 의존성
-├── vite.config.ts                # Vite 빌드 설정
-├── .gitignore
-├── README.md
-```
+### 1. 명령어 실행
 
-## Install svelte + Vite
+1. VS Code에서 `Ctrl+Shift+P` (`Cmd+Shift+P` on Mac)
+2. `> Open TRON Tools Panel` 명령 입력
 
-```sh
-npm create vite@latest . -- --template svelte-ts
-npm install
-```
+### 2. UI에서 원하는 도구 선택
 
-## VS Code ExtentionApp prepared
+- 📤 **Transfer Encoder**
+  - `owner`, `to`, `amount` 입력 → ABI 인코딩 Hex 출력
+- 📥 **Address to Hex**
+  - `T...` 형식의 주소 → `0x...` 포맷 변환
 
-```sh
-mkdir -p src/webview
-mkdir -p public/build
+### 3. 결과 복사 후 테스트넷 / 백엔드에서 활용
 
-```
+---
 
-### dist
+## 📸 스크린샷
 
-```sh
-dist
-└── extension
-    ├── icon.png             ← 주 아이콘 (256x256 PNG)
-    ├── src
-    │   ├── extension.d.ts
-    │   └── extension.js
-    └── tsconfig.extension.tsbuildinfo
-```
+> Transfer Encoder  
+![transfer](images/transfer-encoder.png)
+>
+> Address to Hex  
+![address](images/address-to-hex.png)
 
-### npm run package
+---
 
-```sh
-tron-tools-0.0.1.vsix
-├─ [Content_Types].xml
-├─ extension.vsixmanifest
-└─ extension/
-   ├─ LICENSE.txt [1.04 KB]
-   ├─ index.html [0.36 KB]
-   ├─ package.json [1.24 KB]
-   ├─ readme.md
-   ├─ svelte.config.js [0.34 KB]
-   ├─ tsconfig.webview.json [0.34 KB]
-   ├─ dist/
-   │  └─ extension/
-   │     ├─ icon.png [5.85 KB]
-   │     └─ tsconfig.extension.tsbuildinfo [28.25 KB]
-   └─ public/
-      └─ build/
-         ├─ bundle.js [84.38 KB]
-         └─ index.html [0.26 KB]
+## 🧩 명령어
 
- DONE  Packaged: /Volumes/CTO/github.com/minias/tron-tools/tron-tools-0.0.1.vsix (12 files, 47.68 KB)
-```
+| Command ID         | 설명                      |
+|--------------------|---------------------------|
+| `tronTools.open`   | TRON Tools 패널 열기      |
 
-## Function List
+---
 
-| 메소드            | 입력 필드            |
-| -------------- | ---------------- |
-| `transferFrom` | from, to, amount |
-| `transfer`     | to, amount       |
-| `approve`      | spender, amount  |
-| `allowance`    | owner, spender   |
-| `balanceOf`    | owner            |
-| `totalSupply`  |                  |
+## 🧱 향후 업데이트 예정
+
+- 🧾 ABI 디코더 (`decodeFunctionData`)
+- 🔐 Message Signing / Signature Verification
+- 📡 Tron RPC 호출 유틸리티
+- 🧪 계약 테스트 시나리오 구성 기능
+
+---
+
+## 📎 GitHub 레포지토리
+
+[🔗 GitHub - tron-tools](https://github.com/minias/tron-tools)
+
+Pull Request, Issue 모두 환영합니다 🙌
+
+---
+
+## 🔖 키워드
+
+`tron`, `trc20`, `abi encoder`, `address hex`, `smart contract`, `transferFrom`, `blockchain`, `web3`, `vscode extension`
+
+---
+
+## ✅ 설치
+
+[🛠️ VS Code 마켓플레이스에서 설치하기](https://marketplace.visualstudio.com/items?itemName=YOUR_PUBLISHER_NAME.tron-tools)
