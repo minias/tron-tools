@@ -14,3 +14,4 @@ tsconfig.extension.json
 webpack.config.js
 rollup.config.js
 .vscode-test/
+!dist/extension.js  # ✅ 꼭 포함되도록 명시
