@@ -1,8 +1,19 @@
 {
   "name": "tron-tools",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icon": "dist/extension/icon.png",
+  "publisher": "miniaslee",
+  "keywords": ["tron", "trc20", "abi", "crypto", "transferFrom", "hex", "blockchain"],
+  "contributes": {
+    "commands": [
+      {
+        "command": "tronTools.open",
+        "title": "Open TRON Tools Panel",
+        "category": "TRON Tools"
+      }
+    ]
+  },  
   "type": "module",
   "repository": {
     "type": "git",
