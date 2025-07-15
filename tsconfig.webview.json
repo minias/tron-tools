@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "$lib/*": ["src/lib/*"]
+    },    
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM"],
+    "strict": true,
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "types": ["svelte"],
+    "composite": true
+  },
+  "include": [
+    "src/**/*", 
+    "src/lib/**/*",
+    "src/webview/**/*"
+  ],
+  "exclude": ["node_modules"]
+}

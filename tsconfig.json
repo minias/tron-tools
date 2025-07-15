@@ -1,0 +1,8 @@
+// tsconfig.json
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.extension.json" },
+    { "path": "./tsconfig.webview.json" }
+  ]
+}

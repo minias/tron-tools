@@ -1,0 +1,16 @@
+# .vscodeignore
+
+# 빌드 아웃풋만 남기고 전부 제외
+**/node_modules/**
+**/src/**
+**/test/**
+**/*.ts
+**/*.map
+.vscode/
+.git/
+.gitignore
+tsconfig.json
+tsconfig.extension.json
+webpack.config.js
+rollup.config.js
+.vscode-test/
