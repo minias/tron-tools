@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ES2022"],
+    "outDir": "dist/extension",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "types": ["node", "vscode"],
+    "composite": true
+  },
+  "include": ["src/extension.ts"]
+}
