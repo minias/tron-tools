@@ -1,21 +1,26 @@
 {
   "name": "tron-tools",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/extension.js",
   "icon": "media/icon.png",
   "publisher": "miniaslee",
   "keywords": ["tron", "trc20", "abi", "crypto", "transferFrom", "hex", "blockchain"],
+  "activationEvents": [
+    "onCommand:tron-tools.open"
+  ],  
   "contributes": {
     "commands": [
       {
-        "command": "tronTools.open",
+        "command": "tron-tools.open",
         "title": "Open TRON Tools Panel",
         "category": "TRON Tools"
       }
     ]
+  },
+  "bugs": {
+    "url": "https://github.com/minias/tron-tools/issues"
   },  
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/minias/tron-tools.git"

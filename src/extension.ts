@@ -1,11 +1,11 @@
 // src/extension.ts
 import * as vscode from 'vscode';
 import * as path from 'path';
-import * as fs from 'fs';
+//import * as fs from 'fs';
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('tron-tools.openWebview', () => {
+    vscode.commands.registerCommand('tron-tools.open', () => {
       const panel = vscode.window.createWebviewPanel(
         'tronToolsWebview',
         'Tron Tools',
@@ -26,6 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
     })
   );
 }
+export function deactivate() {}
 
 function getWebviewHtml(bundleUrl: string) {
   return `<!DOCTYPE html>

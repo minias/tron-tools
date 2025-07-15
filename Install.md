@@ -69,6 +69,9 @@ npm run build
 npm run package
 #code --install-extension tron-tools-0.0.1.vsix
 #Ctrl+Shift+P → Open TRON Tools Panel 실행
+#삭제 및 재설치
+#code --uninstall-extension miniaslee.tron-tools
+#code --install-extension tron-tools-0.0.2.vsix
 ```
 
 ### dist
