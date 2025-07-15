@@ -65,7 +65,10 @@ npm install
 ```sh
 mkdir -p src/webview
 mkdir -p public/build
-
+npm run build
+npm run package
+#code --install-extension tron-tools-0.0.1.vsix
+#Ctrl+Shift+P → Open TRON Tools Panel 실행
 ```
 
 ### dist

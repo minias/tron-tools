@@ -2,7 +2,8 @@
   "name": "tron-tools",
   "private": true,
   "version": "0.0.2",
-  "icon": "dist/extension/icon.png",
+  "main": "dist/extension.js",
+  "icon": "media/icon.png",
   "publisher": "miniaslee",
   "keywords": ["tron", "trc20", "abi", "crypto", "transferFrom", "hex", "blockchain"],
   "contributes": {
@@ -17,7 +18,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com-minias/minias/tron-tools.git"
+    "url": "https://github.com/minias/tron-tools.git"
   },
   "scripts": {
     "dev": "vite",
