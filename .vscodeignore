@@ -1,6 +1,7 @@
 # .vscodeignore
 
 # 빌드 아웃풋만 남기고 전부 제외
+stats.html
 **/node_modules/**
 **/src/**
 **/test/**
@@ -8,11 +9,18 @@
 **/*.map
 .vscode/
 .git/
+scripts/**
 .gitignore
 tsconfig.json
 tsconfig.extension.json
+tsconfig.extension.tsbuildinfo
 webpack.config.js
 rollup.config.js
 .vscode-test/
 !dist/extension.js  # ✅ 꼭 포함되도록 명시
-extension/dist/extension.js
+!media/icon.png
+!extension/dist/extension.js
+.markdownlint.json
+Install.md
+svelte.config.js
+tsconfig.webview.json

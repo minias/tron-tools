@@ -1,4 +1,5 @@
 // vite.config.ts
+//import visualizer from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'; // 👈 필요
@@ -13,6 +14,7 @@ export default defineConfig({
     }
   },  
   plugins: [
+    //visualizer({ open: true }),  // 브라우저에 번들 시각화 결과 자동 오픈
     svelte({
       preprocess: vitePreprocess(), // 👈 Svelte preprocess 적용
       compilerOptions: {
@@ -24,6 +26,7 @@ export default defineConfig({
   ],
   build: {
     outDir: path.resolve(__dirname, 'public/build'), // 번들 위치
+    chunkSizeWarningLimit: 1000, // 1MB로 상향
     emptyOutDir: true,
     rollupOptions: {
       output: {

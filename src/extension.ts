@@ -4,8 +4,10 @@ import * as path from 'path';
 //import * as fs from 'fs';
 
 export function activate(context: vscode.ExtensionContext) {
+  // 1. WebView 명령 등록
   context.subscriptions.push(
     vscode.commands.registerCommand('tron-tools.open', () => {
+      console.log('🚀 tron-tools.open 커맨드 실행됨');
       const panel = vscode.window.createWebviewPanel(
         'tronToolsWebview',
         'Tron Tools',
@@ -25,8 +27,38 @@ export function activate(context: vscode.ExtensionContext) {
       panel.webview.html = getWebviewHtml(bundleUri.toString());
     })
   );
+  // 2. 상태 표시줄 아이콘 추가
+  // const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+  // statusBarItem.text = '$(rocket) Tron Tools';
+  // statusBarItem.tooltip = 'Tron Tools 열기';
+  // statusBarItem.command = 'tron-tools.open';
+  // statusBarItem.show();
+
+  // context.subscriptions.push(statusBarItem);
+  // 좌측 사이드바 트리뷰 등록
+  const treeDataProvider = new DummyTreeProvider();
+  const treeView = vscode.window.createTreeView('tronToolsPanel', {
+    treeDataProvider
+  });
+  context.subscriptions.push(treeView);
 }
+
 export function deactivate() {}
+class DummyTreeProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
+  getTreeItem(element: vscode.TreeItem): vscode.TreeItem {
+    return element;
+  }
+  getChildren(): vscode.TreeItem[] {
+    const item = new vscode.TreeItem('트론툴즈', vscode.TreeItemCollapsibleState.None);
+    item.command = {
+      command: 'tron-tools.open',
+      tooltip: 'Tron Tools 열기',
+      title: '트론툴즈'
+    };
+    item.iconPath = new vscode.ThemeIcon('rocket'); // optional codicon
+    return [item];
+  }
+}
 
 function getWebviewHtml(bundleUrl: string) {
   return `<!DOCTYPE html>

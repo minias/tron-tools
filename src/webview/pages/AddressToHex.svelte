@@ -1,68 +1,51 @@
 <!-- src/webview/pages/AddressToHex.svelte -->
 <script lang="ts">
-  import Menu from '../components/Menu.svelte';
-  import { currentPage, type Page } from '../store';
-  import { tronAddressToHex } from '$lib/abiEncoder';
-  let page: Page = 'AddressToHex';
+  import Layout from '../components/Layout.svelte';
+  import { type Page } from '../store';
+  import { tronAddressToHex, tronHexToAddress } from '$lib/abiEncoder';
 
-  let address = '';
-  let hex = '';
+  let page: Page = 'AddressToHex';
+  let tronAddress = '';
+  let hexAddress = '';
   let error = '';
 
   function convert() {
     try {
       error = '';
-      hex = tronAddressToHex(address.trim());
+      if (tronAddress.trim() && !hexAddress.trim()) {
+        hexAddress = tronAddressToHex(tronAddress.trim());
+      } else if (!tronAddress.trim() && hexAddress.trim()) {
+        tronAddress = tronHexToAddress(hexAddress.trim());
+      } else if (tronAddress.trim() && hexAddress.trim()) {
+        hexAddress = tronAddressToHex(tronAddress.trim());
+      } else {
+        error = '⚠️ 주소 또는 HEX 입력이 필요합니다.';
+      }
     } catch (e) {
-      hex = '';
       error = '⚠️ 변환 실패: ' + (e instanceof Error ? e.message : String(e));
     }
   }
 </script>
+<Layout {page}>
+  <!-- 좌측 textarea -->
+  <div class="box">
+    <textarea bind:value={tronAddress} placeholder="TRON 주소 (예: T...)" rows="3"></textarea>
+  </div>
 
-<style>
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 1rem;
-  }
-  label {
-    display: block;
-    margin-top: 1rem;
-    font-weight: bold;
-  }
-  input, textarea, button {
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.25rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
-  button {
-    margin-top: 1rem;
-    background-color: #007acc;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-  }
-</style>
-<Menu {page} />
-<div class="container">
-  <h2>TRON 주소 → Hex 변환</h2>
+  <!-- 중앙 버튼 (높이 100% 맞춤) -->
+  <div class="center-button">
+    <button on:click={convert}>변환</button>
+  </div>
 
-  <label for="address">TRON 주소 (예: T...)</label>
-  <input id="address" bind:value={address} placeholder="예: TAbcd123..." />
+  <!-- 우측 textarea -->
+  <div class="box">
+    <textarea bind:value={hexAddress} placeholder="HEX 주소 (예: 41...)" rows="3"></textarea>
+  </div>
+</Layout>
 
-  <button on:click={convert}>Hex로 변환</button>
-
-  {#if hex}
-    <label for="hex">0x Hex 주소</label>
-    <textarea id="hex" readonly rows="3">{hex}</textarea>
-  {/if}
-
-  {#if error}
-    <p style="color: red;">{error}</p>
-  {/if}
-</div>
+ 
+{#if error}
+  <div class="error-container">
+    <pre class="error-message">{error}</pre>
+  </div>
+{/if}

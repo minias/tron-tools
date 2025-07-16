@@ -1,18 +1,44 @@
 {
   "name": "tron-tools",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/extension.js",
   "icon": "media/icon.png",
   "publisher": "miniaslee",
-  "keywords": ["tron", "trc20", "abi", "crypto", "transferFrom", "hex", "blockchain"],
-  "activationEvents": [
-    "onCommand:tron-tools.open"
-  ],  
+  "keywords": [
+    "tron",
+    "trc20",
+    "abi",
+    "crypto",
+    "transferFrom",
+    "hex",
+    "blockchain"
+  ],
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "tronToolsContainer",
+          "title": "트론 툴즈",
+          "icon": "media/icon.png"
+        }
+      ]
+    },
+    "views": {
+      "tronToolsContainer": [
+        {
+          "icon": "medis/icon.png",
+          "id": "tronToolsPanel",
+          "name": "TRC20 도구들"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "tron-tools.open",
+        "key": "ctrl+shift+z",
+        "mac": "ctrl+shift+z",
+        "when": "editorTextFocus",
         "title": "Open TRON Tools Panel",
         "category": "TRON Tools"
       }
@@ -20,7 +46,7 @@
   },
   "bugs": {
     "url": "https://github.com/minias/tron-tools/issues"
-  },  
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/minias/tron-tools.git"
@@ -45,6 +71,7 @@
     "@types/node": "^24.0.14",
     "@types/vscode": "^1.88.0",
     "@vscode/vsce": "^3.6.0",
+    "rollup-plugin-visualizer": "^6.0.3",
     "svelte": "^5.36.0",
     "tslint": "^5.16.0",
     "typescript": "~5.8.3",
@@ -55,10 +82,9 @@
     "vscode": "^1.88.0"
   },
   "dependencies": {
-    "bs58check": "^4.0.0",
-    "buffer": "^6.0.3",
+    "bs58check": "^4.0.0",    
     "ethers": "^6.15.0",
     "markdown-it": "^14.1.0",
-    "xml2js": "^0.6.2"
+    "tronweb": "^6.0.3"
   }
 }

@@ -14,13 +14,13 @@ tron-tools
 
 ## 확장 로직
 
-| 역할         | 기술 스택                       | 설명                             |
-| ---------- | --------------------------- | ------------------------------ |
-| 🧠 확장 로직   | TypeScript                  | 명령 등록, WebView 창 띄우기 등         |
-| 🎨 UI (웹뷰) | Svelte (with Vite)          | 빠른 빌드, 간결한 코드, 재사용성            |
-| 📦 번들링 도구  | Vite                        | Svelte 앱을 빠르게 WebView용 JS로 번들링 |
-| 📜 ABI 처리  | Ethers.js 또는 TronWeb        | ABI 인코딩, 주소 처리                 |
-| 🔌 통신      | `postMessage` (WebView API) | WebView <-> Extension 간 메시지 통신 |
+| 역할           | 기술 스택                   | 설명                                     |
+| -------------- | --------------------------- | ---------------------------------------- |
+| 🧠 확장 로직   | TypeScript                  | 명령 등록, WebView 창 띄우기 등          |
+| 🎨 UI (웹뷰)   | Svelte (with Vite)          | 빠른 빌드, 간결한 코드, 재사용성         |
+| 📦 번들링 도구 | Vite                        | Svelte 앱을 빠르게 WebView용 JS로 번들링 |
+| 📜 ABI 처리    | Ethers.js 또는 TronWeb      | ABI 인코딩, 주소 처리                    |
+| 🔌 통신        | `postMessage` (WebView API) | WebView <-> Extension 간 메시지 통신     |
 
 ### Information Archture
 
@@ -29,6 +29,9 @@ tron-tools/
 ├── src/
 │   ├── extension.ts              # 확장 진입점 (VS Code 진입 파일)
 │   └── webview/                   # Svelte UI 앱
+│       ├── components/
+│       │   ├── Menu.svelte       # 공통 메뉴 레이아웃
+│       │   └── Layout.svelte     # 공통 레이아웃
 │       ├── App.svelte            # Svelte 메인 컴포넌트
 │       ├── store.ts
 │       ├── main.ts               # Svelte 진입점
@@ -107,8 +110,6 @@ tron-tools-0.0.1.vsix
       └─ build/
          ├─ bundle.js [84.38 KB]
          └─ index.html [0.26 KB]
-
- DONE  Packaged: /Volumes/CTO/github.com/minias/tron-tools/tron-tools-0.0.1.vsix (12 files, 47.68 KB)
 ```
 
 ## Function List

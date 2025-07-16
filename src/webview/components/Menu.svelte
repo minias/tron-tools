@@ -2,7 +2,7 @@
 <script lang="ts">
   import { currentPage } from '../store';
 
-  export let current: 'TransferEncoder' | 'AddressToHex' = 'TransferEncoder';
+  export let current: 'TransferEncoder' | 'ResourceStatus' | 'AddressToHex' = 'TransferEncoder';
   export let page: string;
 
   currentPage.subscribe((value) => {
@@ -10,7 +10,7 @@
     current = value;
   });
 
-  function navigate(page: 'TransferEncoder' | 'AddressToHex') {
+  function navigate(page: 'TransferEncoder' | 'ResourceStatus' | 'AddressToHex') {
     currentPage.set(page);
   }
 </script>
@@ -28,6 +28,12 @@
   >
     주소 → HEX 변환
   </button>
+  <button
+    class:active={current === 'ResourceStatus'}
+    on:click={() => navigate('ResourceStatus')}
+  >
+    에너지 사용량 조회
+  </button>  
 </nav>
 
 <style>
@@ -39,8 +45,35 @@
     padding-bottom: 0.5rem;
     flex-wrap: wrap;
   }
+
+  .menu button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    min-width: 160px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .menu button:hover {
+    background-color: #ececec;
+  }
+
   .menu button.active {
     background-color: #333;
     color: white;
+    border-color: #333;
+  }
+
+  @media (max-width: 480px) {
+    .menu {
+      flex-direction: column;
+    }
+
+    .menu button {
+      width: 100%;
+    }
   }
 </style>
