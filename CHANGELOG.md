@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [0.0.4] - 2025-07-16
+## [0.0.5] - 2025-07-16
 
 ### ✨ Features
 
@@ -26,6 +26,24 @@ All notable changes to this project will be documented in this file.
 - `ethers.Interface`에서 발생하던 invalid address 오류 해결
   - `tronAddressToEthHex` 유틸 함수로 주소 포맷 변환 처리
 - `<textarea />` 자가 닫힘 태그 → `<textarea></textarea>`로 수정 (Svelte 경고 제거)
+
+---
+
+## [0.0.4] - 2025-07-16
+
+### Added
+
+- VS Code 확장 기능 정상 작동 버전 배포
+- Svelte WebView에서 주소 변환(AddressToHex) 및 TransferEncoder 메뉴 완성
+- TRC20 `transferFrom(address,address,uint256)` ABI 인코딩 기능 UI 연동
+- Svelte 앱 내 route 전환 및 메뉴별 초기 상태 관리 개선
+- USDT Smart Contract 전송 파라미터 인코딩 유틸리티 추가
+
+### Fixed
+
+- WebView 초기 진입 시 공백 상태에서 첫 메뉴 자동 로드
+- 잘못된 import/export 오류: `"exports is not defined in ES module scope"` 해결
+- 빌드 시 `extension.js` 누락 문제 해결 (`outDir` 설정 조정 및 `.vscodeignore` 수정)
 
 ---
 
