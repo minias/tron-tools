@@ -12,8 +12,14 @@
     "crypto",
     "transferFrom",
     "hex",
-    "blockchain"
+    "blockchain",
+    "minias"
   ],
+  "categories": [
+    "Other",
+    "Programming Languages",
+    "Debuggers"
+  ],  
   "contributes": {
     "viewsContainers": {
       "activitybar": [
