@@ -33,6 +33,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- 단축키 추가 (ctrl+shift+z)
 - VS Code 확장 기능 정상 작동 버전 배포
 - Svelte WebView에서 주소 변환(AddressToHex) 및 TransferEncoder 메뉴 완성
 - TRC20 `transferFrom(address,address,uint256)` ABI 인코딩 기능 UI 연동
