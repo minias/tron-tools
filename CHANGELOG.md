@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### 🐛 Bug Fixes
 
 - `package.json`에 `activationEvents` 등록하지 않아 확장앱이 실행되지 않던 오류 해결
+- 기타 최적화(라고 쓰고 삽질이라 읽는다)
 
 ## [0.0.5] - 2025-07-16
 

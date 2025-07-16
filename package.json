@@ -5,6 +5,11 @@
   "main": "dist/extension.js",
   "icon": "media/icon.png",
   "publisher": "miniaslee",
+  "pricing": "Free",
+  "engines": {
+    "node": ">=16",
+    "vscode": "^1.90.0"
+  },  
   "keywords": [
     "tron",
     "trc20",
@@ -45,6 +50,7 @@
       {
         "command": "tron-tools.open",
         "title": "Open TRON Tools Panel",
+        "description": "Open TRON Tools Panel",
         "category": "TRON Tools"
       }
     ],
@@ -89,10 +95,6 @@
     "tslint": "^5.16.0",
     "typescript": "~5.8.3",
     "vite": "^7.0.4"
-  },
-  "engines": {
-    "node": ">=18",
-    "vscode": "^1.88.0"
   },
   "dependencies": {
     "bs58check": "^4.0.0",
