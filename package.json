@@ -1,7 +1,7 @@
 {
   "name": "tron-tools",
   "private": true,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "dist/extension.js",
   "icon": "media/icon.png",
   "publisher": "miniaslee",
@@ -18,8 +18,11 @@
   "categories": [
     "Other",
     "Programming Languages",
-    "Debuggers"
-  ],  
+    "Visualization"
+  ],
+  "activationEvents": [
+    "onCommand:tron-tools.open"
+  ],
   "contributes": {
     "viewsContainers": {
       "activitybar": [
@@ -33,7 +36,6 @@
     "views": {
       "tronToolsContainer": [
         {
-          "icon": "medis/icon.png",
           "id": "tronToolsPanel",
           "name": "TRC20 도구들"
         }
@@ -42,11 +44,16 @@
     "commands": [
       {
         "command": "tron-tools.open",
-        "key": "ctrl+shift+z",
-        "mac": "ctrl+shift+z",
-        "when": "editorTextFocus",
         "title": "Open TRON Tools Panel",
         "category": "TRON Tools"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "tron-tools.open",
+        "key": "ctrl+shift+z",
+        "mac": "ctrl+shift+z",
+        "when": "editorTextFocus"
       }
     ]
   },
@@ -88,7 +95,7 @@
     "vscode": "^1.88.0"
   },
   "dependencies": {
-    "bs58check": "^4.0.0",    
+    "bs58check": "^4.0.0",
     "ethers": "^6.15.0",
     "markdown-it": "^14.1.0",
     "tronweb": "^6.0.3"
