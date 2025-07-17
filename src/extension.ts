@@ -1,7 +1,6 @@
 // src/extension.ts
 import * as vscode from 'vscode';
 import * as path from 'path';
-//import * as fs from 'fs';
 
 export function activate(context: vscode.ExtensionContext) {
   // 1. WebView 명령 등록
