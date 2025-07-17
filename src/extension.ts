@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       const bundleUri = panel.webview.asWebviewUri(bundlePath);
 
-      panel.webview.html = getWebviewHtml(bundleUri.toString());
+      panel.webview.html = getWebviewHtml(panel.webview, context.extensionUri);
     })
   );
   // 2. 상태 표시줄 아이콘 추가
@@ -43,7 +43,9 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {}
+
 class DummyTreeProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
+  
   getTreeItem(element: vscode.TreeItem): vscode.TreeItem {
     return element;
   }
@@ -58,17 +60,20 @@ class DummyTreeProvider implements vscode.TreeDataProvider<vscode.TreeItem> {
     return [item];
   }
 }
-
-function getWebviewHtml(bundleUrl: string) {
+function getWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri) {
+  const bundleUri = webview.asWebviewUri(
+    vscode.Uri.joinPath(extensionUri, 'dist', 'bundle.js')
+  );
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src ${webview.cspSource}; style-src 'unsafe-inline';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tron Tools</title>
 </head>
 <body>
-  <script src="${bundleUrl}"></script>
+  <script src="${bundleUri}"></script>
 </body>
 </html>`;
 }
