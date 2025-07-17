@@ -91,7 +91,7 @@
     "@types/vscode": "^1.88.0",
     "@vscode/vsce": "^3.6.0",
     "rollup-plugin-visualizer": "^6.0.3",
-    "svelte": "^5.36.0",
+    "svelte": "^5.36.5",
     "tslint": "^5.16.0",
     "typescript": "~5.8.3",
     "vite": "^7.0.4"
