@@ -1,7 +1,7 @@
 {
   "name": "tron-tools",
   "private": true,
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "dist/extension.js",
   "icon": "media/icon.png",
   "publisher": "miniaslee",
@@ -9,7 +9,7 @@
   "engines": {
     "node": ">=16",
     "vscode": "^1.90.0"
-  },  
+  },
   "keywords": [
     "tron",
     "trc20",
@@ -76,6 +76,7 @@
     "build:extension": "tsc -p tsconfig.extension.json",
     "build": "npm run build:webview && npm run build:extension",
     "vscode:prepublish": "npm run compile",
+    "test": "tsc --noEmit",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "preview": "vite preview",
@@ -97,9 +98,13 @@
     "vite": "^7.0.5"
   },
   "dependencies": {
+    "apexcharts": "^5.2.0",
     "bs58check": "^4.0.0",
+    "chart.js": "^4.5.0",
+    "dayjs": "^1.11.13",
     "ethers": "^6.15.0",
     "markdown-it": "^14.1.0",
+    "svelte-apexcharts": "^1.0.2",
     "tronweb": "^6.0.3"
   }
 }

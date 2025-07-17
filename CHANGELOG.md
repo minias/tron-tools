@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.7] - 2025-07-17
+
+### ✨ Features
+
+- **`ResourceStatus` 페이지에 트론 리소스 사용량 차트 기능 추가**
+  - `startDate`, `endDate` 지정으로 기간 필터링 가능 (기본 시작일: `2025.01.01 00:00:00`)
+  - Chart.js 기반 에너지 사용량 시각화 (향후 TronScan API 연동 예정)
+- 실시간 시각화를 위한 구조 설계 및 `Chart.js` 연동 완료
+- `dayjs`를 활용한 날짜 처리 및 포맷 통일 (`YYYY.MM.DD HH:mm:ss`)
+
+### 💄 UI 개선
+
+- 공통 레이아웃 `Layout.svelte` 적용  
+  → 페이지 구조 통일, 상단 타이틀/탭 구조 유지
+- 차트 스타일 및 컨테이너 정렬 개선  
+  → 그래프가 화면을 꽉 채우도록 padding/margin 조정
+- 날짜 입력 필드 UI 개선  
+  → 날짜 순서가 자연스럽게 정렬되도록 구성
+
+### 🐛 Bug Fixes
+
+- Chart.js 인스턴스 중복 생성 방지  
+  → `onMount`에서 초기화 처리
+- 글로벌 스타일이 적용되지 않던 문제 해결  
+  → `Layout.svelte` 하위에서 CSS 적용 보장
+
+---
+
 ## [0.0.6] - 2025-07-16
 
 ### 🐛 Bug Fixes
