@@ -27,3 +27,4 @@ dist/**
 build/**
 public/build/**
 *.vsix
+tsconfig.extension.tsbuildinfo
