@@ -68,7 +68,6 @@ function getWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri) {
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src ${webview.cspSource}; style-src 'unsafe-inline';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tron Tools</title>
 </head>
