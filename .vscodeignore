@@ -9,6 +9,7 @@ stats.html
 **/*.map
 .vscode/
 .git/
+.github/
 scripts/**
 .gitignore
 tsconfig.json
@@ -22,5 +23,6 @@ rollup.config.js
 !extension/dist/extension.js
 .markdownlint.json
 Install.md
+SECURITY.md
 svelte.config.js
 tsconfig.webview.json
