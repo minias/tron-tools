@@ -27,6 +27,7 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, 'public/build'), // 번들 위치
     chunkSizeWarningLimit: 1000, // 1MB로 상향
+    sourcemap: true,
     emptyOutDir: true,
     rollupOptions: {
       output: {
