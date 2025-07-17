@@ -1,7 +1,7 @@
 {
   "name": "tron-tools",
   "private": true,
-  "version": "0.0.9",
+  "version": "0.0.10",
   "main": "dist/extension.js",
   "icon": "media/icon.png",
   "publisher": "miniaslee",
@@ -26,6 +26,7 @@
     "Visualization"
   ],
   "activationEvents": [
+    "onView:tronToolsPanel",
     "onCommand:tron-tools.open"
   ],
   "contributes": {

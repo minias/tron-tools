@@ -8,10 +8,13 @@ TRC20 `transferFrom` ABI 인코딩, 주소 ➝ Hex 변환 등 스마트컨트랙
 ## 스크린샷
 
 > Transfer Encoder  
-![transfer](images/transfer-encoder.png)
+![TransferEncoder](images/TransferEncoder.png)
 >
 > Address to Hex  
-![address](images/address-to-hex.png)
+![AddressToHex](images/AddressToHex.png)
+>
+> ResourceStatus
+![ResourceStatus](images/ResourceStatus.png)
 
 ---
 
