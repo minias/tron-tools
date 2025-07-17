@@ -1,0 +1,24 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # npm 패키지 의존성 관리
+  - package-ecosystem: "npm"
+    directory: "/" # 루트의 package.json 기준
+    schedule:
+      interval: "weekly" # 매주 업데이트 확인
+    open-pull-requests-limit: 5
+    allow:
+      - dependency-type: "direct" # 직접 설치한 패키지만 업데이트
+    ignore:
+      - dependency-name: "svelte" # Svelte 4.x 버전은 무시
+        versions: ["^4.0.0"]
+
+  # GitHub Actions 워크플로우 내 의존성
+  - package-ecosystem: "github-actions"
+    directory: "/" # .github/workflows 자동 인식
+    schedule:
+      interval: "weekly"
