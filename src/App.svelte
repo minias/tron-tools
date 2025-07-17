@@ -1,11 +1,7 @@
 <!-- src/app.svelte (WebView 용) -->
-<script lang="ts">
-  import Icon from './components/Icon.svelte';
-</script>
-
 <main>
   <h2>🧰 Tron Tools</h2>
-  <Icon />
+  <img src="media/icon.png" alt="Tron Tools Icon"/>
 </main>
 
 <style>
