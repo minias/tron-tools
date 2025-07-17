@@ -42,7 +42,6 @@
     }
   }
 </script>
-
 <Layout {page}>
   <div class="box">
     <input bind:value={from} placeholder="From 주소 (T...)" />

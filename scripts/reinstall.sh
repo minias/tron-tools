@@ -1,5 +1,5 @@
 #!/bin/bash
-Ver="0.0.4"
+Ver=$1
 npm run build
 npm run package
 code --uninstall-extension miniaslee.tron-tools
