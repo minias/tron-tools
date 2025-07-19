@@ -1,7 +1,7 @@
 {
   "name": "tron-tools",
   "private": true,
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "dist/extension.js",
   "icon": "media/icon.png",
   "publisher": "miniaslee",

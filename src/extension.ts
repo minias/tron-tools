@@ -3,7 +3,7 @@ import * as path from 'path';
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('tron-tools.openWebview', () => {
+    vscode.commands.registerCommand('tron-tools.open', () => {
       const panel = vscode.window.createWebviewPanel(
         'tronToolsWebview',
         'Tron Tools',
