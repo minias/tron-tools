@@ -1,5 +1,27 @@
+// src/extension.ts
+// @fileoverview Trongrid API 직접 호출 예제 (Node 환경에서는 CORS 없음)
+// @path src/extension.ts
+//import fetch from 'node-fetch'; // Node.js 18+ 는 기본 fetch 포함됨 (v20.19.0 포함)
+
 import * as vscode from 'vscode';
 import * as path from 'path';
+
+export async function getWalletEnergy(address: string) {
+  const res = await fetch("https://api.trongrid.io/wallet/getresource", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ address }),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Trongrid API 오류: ${res.status}`);
+  }
+
+  const data = await res.json();
+  return data;
+}
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
@@ -18,6 +40,23 @@ export function activate(context: vscode.ExtensionContext) {
 
       const html = getWebviewHtml(panel.webview, context, 'ResourceStatus');
       panel.webview.html = html;
+      panel.webview.onDidReceiveMessage(async (message) => {
+        if (message.command === 'check-energy') {
+          const { address } = message.payload;
+          try {
+            const energy = await getWalletEnergy(address);
+            panel.webview.postMessage({
+              command: 'energy-response',
+              data: energy
+            });
+          } catch (err) {
+            panel.webview.postMessage({
+              command: 'error',
+              message: err
+            });
+          }
+        }
+      });      
     })
   );
 }

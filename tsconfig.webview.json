@@ -20,6 +20,7 @@
     "src/**/*", 
     "src/lib/**/*",
     "src/lib/types/**/*",
+    "src/webview/vscode.d.ts",
     "src/webview/**/*"
   ],
   "exclude": ["node_modules"]

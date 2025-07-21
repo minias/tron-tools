@@ -26,34 +26,35 @@ tron-tools
 
 ```sh
 tron-tools/
+├── images                     # 확장 이미지 등
+├── LICENSE
+├── media                      # VS Code 확장용 아이콘
+├── public                     # 정적 파일
+├── package.json
+├── package-lock.json
+├── svelte.config.js
+├── tsconfig*.json             # TS 설정 파일 (Webview/Extension 분리됨)
+├── vite.config.ts            # WebView용 Vite 설정
 ├── src/
-│   ├── extension.ts              # 확장 진입점 (VS Code 진입 파일)
-│   └── webview/                   # Svelte UI 앱
-│       ├── components/
-│       │   ├── Menu.svelte       # 공통 메뉴 레이아웃
-│       │   └── Layout.svelte     # 공통 레이아웃
-│       ├── App.svelte            # Svelte 메인 컴포넌트
-│       ├── store.ts
-│       ├── main.ts               # Svelte 진입점
-│       └── index.html            # 웹뷰용 HTML
-│       └── pages/
-│           ├── TransferEncoder.svelte
-│           └── AddressToHex.svelte
-├── public/
-│   └── build/                    # Vite 빌드 결과물
-│       └── bundle.js             # WebView에서 사용할 JS
-├── .vscode/
-│   └── launch.json               # 확장 디버깅 설정 (선택)
-├── dist/
-│   ├── extension/                # 컴파일된 확장 코드
-│   └── webview/                  # 웹뷰 빌드 결과물 (vite에서 따로 생성됨)
-├── tsconfig.json                 # TypeScript 설정
-├── tsconfig.extension.json
-├── tsconfig.webview.json
-├── package.json                  # npm 스크립트 및 의존성
-├── vite.config.ts                # Vite 빌드 설정
-├── .gitignore
-├── README.md
+│   ├── extension.ts          # VS Code 확장 진입점
+│   ├── main.ts               # 아마도 Svelte WebView 진입점
+│   ├── app.css
+│   ├── vite-env.d.ts
+│   ├── assets/               # 아이콘 등 정적 에셋
+│   └── webview/              # 실제 WebView 구조
+│       ├── App.svelte
+│       ├── index.html
+│       ├── main.ts
+│       ├── vscode.d.ts       # VS Code ↔ Webview 통신용 타입
+│       ├── store.ts          # 전역 상태관리
+│       ├── styles/global.css
+│       ├── components/       # 공통 UI 컴포넌트
+│       │   ├── Layout.svelte
+│       │   └── Menu.svelte
+│       └── pages/            # 주요 기능 페이지들
+│           ├── AddressToHex.svelte
+│           ├── ResourceStatus.svelte
+│           └── TransferEncoder.svelte
 ```
 
 ## Install svelte + Vite

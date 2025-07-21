@@ -72,6 +72,7 @@
     "url": "https://github.com/minias/tron-tools.git"
   },
   "scripts": {
+    "tree": "tree -I 'lib|build|.github|.vscode|dist|node_modules|scripts|*.png|*.zip|*.md'",
     "dev": "vite",
     "build:webview": "vite build",
     "build:extension": "tsc -p tsconfig.extension.json",

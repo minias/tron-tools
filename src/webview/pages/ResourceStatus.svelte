@@ -6,7 +6,13 @@
   import dayjs from 'dayjs';
 
   export let page = 'ResourceStatus';
-
+  const vscode = acquireVsCodeApi();
+  function sendMessage() {
+    vscode.postMessage({
+      command: 'check-energy',
+      payload: { address: '...' }
+    });
+  }
   //let startDate = dayjs().subtract(7, 'day').format('YYYY-MM-DD');
   let startDate = dayjs('2025-01-01 00:00:00').format('YYYY-MM-DD');
   let endDate = dayjs().format('YYYY-MM-DD');
@@ -50,7 +56,18 @@
     });
   }
 
-  onMount(fetchData);
+  //onMount(fetchData);
+onMount(() => {
+  window.addEventListener('message', (event) => {
+    const { command, data, message } = event.data;
+    if (command === 'energy-response') {
+      console.log('에너지 정보:', data);
+    }
+    if (command === 'error') {
+      alert(`에러: ${message}`);
+    }
+  });
+});  
 </script>
 
 <Layout {page}>
