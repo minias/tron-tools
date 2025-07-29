@@ -1,0 +1,6 @@
+# .github/codeql/codeql-config.yml
+name: "Custom CodeQL config"
+disable-default-queries: false
+
+queries:
+  - uses: security-and-quality

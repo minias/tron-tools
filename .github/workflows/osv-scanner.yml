@@ -24,7 +24,6 @@ on:
 permissions:
   actions: read
   security-events: write
-  actions: read
   contents: read
 
 jobs:
