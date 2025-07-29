@@ -1,0 +1,13 @@
+# appveyor.yml
+version: 1.0.{build}
+
+image: Ubuntu
+
+install:
+  - npm ci
+
+build_script:
+  - npm run build
+
+test_script:
+  - npm test
