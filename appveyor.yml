@@ -1,13 +1,26 @@
 # appveyor.yml
-version: 1.0.{build}
+# 경로: ./appveyor.yml
 
+version: 1.0.{build}  # 빌드 넘버 포맷
+
+# 사용할 이미지 설정 (Ubuntu)
 image: Ubuntu
 
+# Node.js 버전 설정 (nvm 이용)
+environment:
+  nodejs_version: '18'  # 프로젝트의 Node.js 버전에 맞게 조정
+
+# 설치 단계
 install:
+  - nvm install %nodejs_version%
+  - node --version
+  - npm --version
   - npm ci
 
+# 빌드 단계 (여기만 있으면 MSBuild 자동 실행은 발생하지 않음)
 build_script:
   - npm run build
 
+# 테스트 및 정적 분석 단계
 test_script:
   - npm run check
