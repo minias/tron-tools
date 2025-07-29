@@ -1,26 +1,30 @@
 # appveyor.yml
-# 경로: ./appveyor.yml
+version: 1.0.{build}
 
-version: 1.0.{build}  # 빌드 넘버 포맷
-
-# 사용할 이미지 설정 (Ubuntu)
 image: Ubuntu
 
-# Node.js 버전 설정 (nvm 이용)
+# 환경 변수 선언 (Linux에서는 $nodejs_version 으로 사용)
 environment:
-  nodejs_version: '18'  # 프로젝트의 Node.js 버전에 맞게 조정
+  nodejs_version: "18.20.2"
 
-# 설치 단계
+# 설치 스크립트
 install:
-  - nvm install %nodejs_version%
-  - node --version
-  - npm --version
+  # nvm 설치
+  - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  - export NVM_DIR="$HOME/.nvm"
+  - source "$NVM_DIR/nvm.sh"
+  # node 설치
+  - nvm install $nodejs_version
+  - nvm use $nodejs_version
+  - node -v
+  - npm -v
+  # 패키지 설치
   - npm ci
 
-# 빌드 단계 (여기만 있으면 MSBuild 자동 실행은 발생하지 않음)
+# 빌드 단계
 build_script:
   - npm run build
 
-# 테스트 및 정적 분석 단계
+# 테스트 단계
 test_script:
   - npm run check
