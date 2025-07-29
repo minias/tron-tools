@@ -10,7 +10,13 @@ export const trc20Interface = new Interface([
   'function transfer(address to, uint256 value)',
   'function approve(address spender, uint256 value)',
   'function allowance(address owner, address spender)',
+  'function rentResource(address receiver, uint256 amount, uint256 resourceType)',
+  //fd8527a100000000000000000000000074e52295d21b8557337e5ab5ab5e1ce767f2aa15000000000000000000000000000000000000000000000000000000171aa0e5c00000000000000000000000000000000000000000000000000000000000000001
+  'function returnResource(address receiver,uint256 amount,uint256 resourceType)',
+  //af6f489600000000000000000000000074e52295d21b8557337e5ab5ab5e1ce767f2aa15000000000000000000000000000000000000000000000000000000171aa0e5c00000000000000000000000000000000000000000000000000000000000000001
 ]);
+//// returnResource (af6f4896)
+// receiver_address ,amount_uint256,resourceType_uint256
 
 export function tronAddressToHex(address: string): string {
   return tronWeb.address.toHex(address);

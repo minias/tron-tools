@@ -2,7 +2,7 @@
 <script lang="ts">
   import { currentPage } from '../store';
 
-  export let current: 'TransferEncoder' | 'ResourceStatus' | 'AddressToHex' = 'TransferEncoder';
+  export let current: 'TransferEncoder' | 'ResourceStatus' |'MethodUXPreview'| 'AddressToHex' = 'TransferEncoder';
   export let page: string;
 
   currentPage.subscribe((value) => {
@@ -10,7 +10,7 @@
     current = value;
   });
 
-  function navigate(page: 'TransferEncoder' | 'ResourceStatus' | 'AddressToHex') {
+  function navigate(page: 'TransferEncoder' | 'ResourceStatus' | 'AddressToHex'|'MethodUXPreview') {
     currentPage.set(page);
   }
 </script>
@@ -22,6 +22,12 @@
   >
     TRC20 인코딩
   </button>
+  <button
+    class:active={current === 'MethodUXPreview'}
+    on:click={() => navigate('MethodUXPreview')}
+  >
+    TRC20 인코딩
+  </button>  
   <button
     class:active={current === 'AddressToHex'}
     on:click={() => navigate('AddressToHex')}

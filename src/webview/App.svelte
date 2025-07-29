@@ -4,6 +4,7 @@
   //import { derived } from 'svelte/store';
   import TransferEncoder from './pages/TransferEncoder.svelte';
   import AddressToHex from './pages/AddressToHex.svelte';
+  import MethodUXPreview from './pages/MethodUXPreview.svelte'
   import ResourceStatus from './pages/ResourceStatus.svelte';
   //import Menu from './components/Menu.svelte';
 
@@ -16,6 +17,8 @@
 
 {#if page === 'TransferEncoder'}
   <TransferEncoder />
+{:else if page === 'MethodUXPreview'}
+  <MethodUXPreview />    
 {:else if page === 'ResourceStatus'}
   <ResourceStatus />  
 {:else if page === 'AddressToHex'}

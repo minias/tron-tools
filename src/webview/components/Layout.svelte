@@ -1,6 +1,11 @@
 <!-- src/webview/components/Layout.svelte -->
 <script lang="ts">
+  import MethodSelector from '../components/MethodSelector.svelte'; // 🔥 추가
   export let page: string;
+  // export let showMethodSelector: boolean = false;
+  // export let selectedMethod: string = '';
+  // export let methods: string[] = [];
+
   import Menu from './Menu.svelte';
   // 페이지별 정보 매핑
   const pageMeta: Record<string, { icon: string; title: string; description: string,style:string }> = {
@@ -8,6 +13,12 @@
       icon: '🔐',
       title: 'TRC20 인코딩',
       description: 'transferFrom 함수를 ABI 인코딩합니다.',
+      style: "layout-left",
+    },
+    MethodUXPreview: {
+      icon: '🔐',
+      title: 'TRC20 인코딩 프리뷰',
+      description: '메소드별 ABI 인코딩합니다.',
       style: "layout-left",
     },
     AddressToHex: {
@@ -42,8 +53,7 @@
     <p class="page-description">{description}</p>
   {/if}
 </div>
-
-
+ 
 <div class={style}>
   <slot />
 </div>
