@@ -106,6 +106,6 @@
     "ethers": "^6.15.0",
     "markdown-it": "^14.1.0",
     "svelte-apexcharts": "^1.0.2",
-    "tronweb": "^6.0.3"
+    "tronweb": "^6.0.4"
   }
 }
